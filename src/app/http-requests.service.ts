@@ -9,6 +9,7 @@ export class HttpRequestsService {
 
   error = new Subject;
   calculationInfo: object = {};
+  infoAboutUser: object = {};
 
   constructor(private http:HttpClient) {}
 
@@ -29,7 +30,20 @@ export class HttpRequestsService {
       });
     }
 
-
+  postInfoAboutUser(infoAboutUserInput: any) {
+    const httpPostBody = infoAboutUserInput;
+    this.http
+    .post(
+      'http://localhost:8000/request/create',
+      httpPostBody, {
+        observe: 'response'
+      }
+    ).subscribe(responseData => {
+console.log(responseData.body)
+    }), error => {
+      this.error.next(error.message)
+    }
+  }
 
   }
   

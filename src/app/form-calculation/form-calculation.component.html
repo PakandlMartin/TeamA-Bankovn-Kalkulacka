@@ -2,35 +2,7 @@
   <div class="form-calculation">
     <h2>Úvěrová kalkulačka</h2>
 
-    <input
-    #amount
-    type="number"
-    id="amount"
-    placeholder="Výše úvěru"
-    min="5000"
-    max="1200000"
-    name="amount"
-    step="1000"
-    (change)="changeOfAmount($event)"
-    /> Kč
-
-    <input
-    #numOfMonths
-    type="number"
-    id="time"
-    placeholder="Doba splácení"
-    min="6"
-    max="60"
-    (change) = "changeOfNumOfMonths($event)"
-    />
-
-    měsíců
-    <button
-    [disabled]="!btnActive"
-    type="submit"
-    class="btn"
-    (click)= 'calculate(amount.value, numOfMonths.value)'>Mám zájem</button>
-
+  
     <div class="inputs">
       <div class="changeOfAmountInput">
         <input
@@ -84,12 +56,7 @@
             : "Bez fixního poplatku!"
         }}
       </p>
-
-    </div>
-
-<p>{{ amountInput }}</p>
-<p>{{ numOfMOnthsInput }}</p>
-<p>{{ this.requestCalc.overallAmount }}</p>
+  </div>
 
     <div class="flex">
       <button

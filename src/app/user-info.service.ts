@@ -9,6 +9,10 @@ calculationInformation = {
   numOfMonths: 0
 }
 
+infoAboutUser = {
+  
+}
+
   constructor() { }
 
   

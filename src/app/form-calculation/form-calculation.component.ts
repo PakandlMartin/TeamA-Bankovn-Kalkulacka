@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 
-import { Subject } from 'rxjs';
+
 import { UserInfoService } from '../user-info.service';
 
 @Component({
