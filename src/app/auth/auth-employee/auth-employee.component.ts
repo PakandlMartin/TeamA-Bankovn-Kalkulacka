@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {AuthResponseData, AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {Observable, Subscription} from "rxjs";
+import {HttpRequestsService} from "../../http-requests.service";
 
 @Component({
   selector: 'app-auth-employee',
@@ -11,13 +12,13 @@ import {Observable, Subscription} from "rxjs";
 })
 export class AuthEmployeeComponent implements OnInit {
   @ViewChild('authForm') signUpForm: NgForm;
-  isLoggedin = false;
+  isLoggedIn = false;
   employee = {
     login: '',
     password: '',
   }
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private httpService: HttpRequestsService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +29,10 @@ export class AuthEmployeeComponent implements OnInit {
 
     let authObs: Subscription;
 
-    authObs = this.authService.login(this.employee.login, this.employee.password).subscribe(resData => {
+    authObs = this.httpService.login(this.employee.login, this.employee.password).subscribe(resData => {
       console.log(resData);
       this.router.navigate(['detail']);
-      this.isLoggedin = true;
+      this.isLoggedIn = true;
     })
 
   };

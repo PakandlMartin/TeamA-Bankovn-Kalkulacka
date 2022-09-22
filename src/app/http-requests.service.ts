@@ -56,8 +56,6 @@ console.log(responseData.body)
   }
 
 
-
-
   login(login: string, password: string) {
     let codedData = btoa (login + ':' + password);
     return this.http.get<AuthResponseData>('http://localhost:8000/login',
