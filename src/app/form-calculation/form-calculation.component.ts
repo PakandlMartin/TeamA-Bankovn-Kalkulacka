@@ -3,6 +3,7 @@ import { HttpRequestsService } from '../http-requests.service';
 
 
 import { UserInfoService } from '../user-info.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-calculation',
@@ -19,23 +20,24 @@ calculationInputs = {
 }
 
 calculationOutput = {
-  monthlyPayment: 0, 
-  yearlyInterest: 0, 
-  RPSN: 0, 
-  overallAmount: 0, 
+  monthlyPayment: 0,
+  yearlyInterest: 0,
+  RPSN: 0,
+  overallAmount: 0,
   fixedFee: 0
 };
 
 requestCalc: any;
 
-  constructor( 
+  constructor(
     private httpRequestsService: HttpRequestsService,
-    private userInfoService: UserInfoService
+    private userInfoService: UserInfoService,
+    private router: Router, private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
   }
-  
+
   ngDoCheck() {
     this.requestCalc = this.httpRequestsService.calculationInfo
     if (this.requestCalc) {
@@ -44,18 +46,18 @@ requestCalc: any;
     }
   }
 
-  calculate(amountCalculate, numOfMonthsCalculate ) {
+  calculate(amountCalculate, numOfMonthsCalculate) {
     this.calculationInputs.amount = amountCalculate;
     this.calculationInputs.numOfMonths = numOfMonthsCalculate
     if (this.calculationInputs) {
       this.userInfoService.calculationInformation.amount =  amountCalculate;
       this.userInfoService.calculationInformation.numOfMonths = numOfMonthsCalculate;
     }
-
+    this.router.navigate(['/form'], {relativeTo: this.route});
     console.log(this.userInfoService)
 
   }
-  
+
   changeOfAmount(amountChange) {
     this.amountInput = Number(amountChange.target.value);
     this.calculationInputs.amount = this.amountInput

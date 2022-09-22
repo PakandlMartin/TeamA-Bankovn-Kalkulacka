@@ -1,15 +1,25 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import { Subject, } from "rxjs";
 
-@Injectable({providedIn: 'root'})
 
+
+
+export interface AuthResponseData {
+  login: string,
+  name: string,
+  roles: [string],
+  token: string
+
+}
+@Injectable({providedIn: 'root'})
 export class HttpRequestsService {
 
   error = new Subject;
   calculationInfo: object = {};
   infoAboutUser: object = {};
+
 
   constructor(private http:HttpClient) {}
 
@@ -17,7 +27,7 @@ export class HttpRequestsService {
     const httpPostBody = calculationInputsInfo;
     this.http
     .post<{name: string}>(
-      'http://localhost:8000/request/calculate ', 
+      'http://localhost:8000/request/calculate ',
       httpPostBody, {
         observe: 'response'
       }
@@ -45,7 +55,20 @@ console.log(responseData.body)
     }
   }
 
+
+
+
+  login(login: string, password: string) {
+    let codedData = btoa (login + ':' + password);
+    return this.http.get<AuthResponseData>('http://localhost:8000/login',
+      {headers: new HttpHeaders({
+            Authorization: 'Basic ' + codedData
+          }
+
+        )});
   }
-  
+
+  }
+
 
 

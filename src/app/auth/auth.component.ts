@@ -19,7 +19,6 @@ export class AuthComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.client.token = this.signUpForm.value.token;
-
   }
 
 }
