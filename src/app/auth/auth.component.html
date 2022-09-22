@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="auth.component.css">
+<form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <label>Váš identifikační kód</label>
+      <input
+        type="password"
+        id="token"
+      ngModel
+      name="token">
+      <hr>
+
+      <button type="submit" class="btn btn-success">PŘIHLÁSIT SE</button>
+
+    </div>
+  </div>
+</div>
+</form>

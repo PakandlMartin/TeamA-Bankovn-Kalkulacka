@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="auth-employee.component.css">
+<form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <label>Email</label>
+      <input
+        type="email"
+        id="email"
+      ngModel
+      name="email"
+      required email>
+      <label>Heslo</label>
+      <input
+        type="password"
+        id="password"
+      ngModel
+      name="password"
+      required
+      minlength="6">
+      <hr>
+
+      <button type="submit" [disabled]="!authForm.valid">PŘIHLÁSIT SE</button>
+
+    </div>
+  </div>
+</div>
+</form>
