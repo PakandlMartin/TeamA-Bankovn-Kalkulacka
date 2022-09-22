@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {ViewChild} from "@angular/core";
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -7,6 +8,10 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+  idCreated = false;
+
+  selectedType = 'naturalPerson';
+
 
   @ViewChild('f') signUpForm: NgForm;
 
@@ -15,6 +20,7 @@ export class UserFormComponent implements OnInit {
     name: '',
     surname: '',
     id: '',
+    in: '',
     nationality: '',
     email: '',
     phone: '',
@@ -22,14 +28,18 @@ export class UserFormComponent implements OnInit {
     cp: '',
     co: '',
     city: '',
-    psc: ''
+    psc: '',
+    responsiblePerson: '',
+    job: ''
   };
 
   constructor() {
   }
 
 
+
   ngOnInit(): void {
+    this.idCreated = true;
   }
 
   onSubmit() {
@@ -38,6 +48,7 @@ export class UserFormComponent implements OnInit {
     this.client.name = this.signUpForm.value.name;
     this.client.surname = this.signUpForm.value.surname;
     this.client.id = this.signUpForm.value.id;
+    this.client.in = this.signUpForm.value.id;
     this.client.nationality = this.signUpForm.value.nationality;
     this.client.email = this.signUpForm.value.email;
     this.client.phone = this.signUpForm.value.phone;
