@@ -1,7 +1,8 @@
 .form-calculation {
     background-color: #00843d;
     color: white;
-    max-width: 800px;
+    max-width: 50%;
+    min-width: 500px;
     margin: auto auto;
     border-radius: 3px;
 }
@@ -9,7 +10,7 @@
 .form-calculation > h2 {
     font-size: 2rem;
     padding-top: 20px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     text-align: center;
 }
 
@@ -78,7 +79,7 @@ button {
     background-color: #ffffff;
     margin-bottom: 20px;
     cursor: pointer;
-    border: solid 2px ;
+    border: solid rgb(20, 121, 27) 2px ;
     border-radius: 2px;
 }
 
@@ -90,7 +91,7 @@ button {
 
 .formDisplay {
     max-width: 600px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #00843d;
     background-color: rgb(255, 255, 255);
 margin: 20px auto;
@@ -104,14 +105,53 @@ border-radius: 3px;
 }
 
 
-
 .formDisplay > p {
    margin: 2px 0 0 0 ;
 }
 
 .bold {
- font-size: 1.3rem;
+ font-size: 1.2rem;
     font-weight: bold;
 }
 
 
+input[type="range"] {
+    -webkit-appearance: none;
+    min-width: 100%;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 40%;
+    background: #c8f6d7;
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+
+  .rangeInput {
+    background-color: #05ff7a54;
+    padding: 15px;
+    margin: 20px 10px 10px 10px;
+    border-radius: 10px;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #999;
+
+    opacity: 1; /* Firefox */
+  }
