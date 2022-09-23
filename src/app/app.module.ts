@@ -12,16 +12,8 @@ import { HttpRequestsService } from './http-requests.service';
 import {DetailsComponent} from "./details/details.component";
 import {UserFormComponent} from "./user-form/user-form.component";
 import {RouterModule, Routes} from "@angular/router";
-import { AuthComponent } from './auth/auth.component';
-import { AuthEmployeeComponent } from './auth/auth-employee/auth-employee.component';
 
-const appRoutes: Routes = [
-  { path: '', component: FormCalculationComponent },
-  { path: 'calculator', component: FormCalculationComponent },
-  { path: 'client', component: UserFormComponent },
-  { path: 'login', component: AuthComponent },
-  { path: 'employee', component: AuthEmployeeComponent },
-  ];
+
 
 
 @NgModule({
@@ -33,15 +25,13 @@ const appRoutes: Routes = [
     FormCalculationComponent,
     DetailsComponent,
     UserFormComponent,
-    AuthComponent,
-    AuthEmployeeComponent,
+
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [HttpRequestsService],

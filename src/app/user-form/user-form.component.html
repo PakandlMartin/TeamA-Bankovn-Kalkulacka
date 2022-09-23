@@ -14,12 +14,14 @@
       </div>
       <br>
       <p *ngIf="selectedType ==='legalEntity'">
-        <label for="name">Jméno</label><br>
+        <label for="companyName">Jméno Společností</label><br>
         <input
           type="text"
           id="companyName"
-          ngModel name="name"
-          required>
+          ngModel name="companyName"
+          required
+        #companyName="ngModel"><br>
+        <span class="help" *ngIf="!companyName.valid && companyName.touched">pole musí být vyplněno</span>
       </p>
       <p *ngIf="selectedType ==='naturalPerson'||selectedType ==='entrepreneur'">
         <label for="name">Jméno</label><br>
@@ -27,15 +29,20 @@
           type="text"
           id="name"
           ngModel name="name"
-          required>
+          required
+          #name="ngModel"><br>
+        <span class="help" *ngIf="!name.valid && name.touched">pole musí být vyplněno</span>
+
       </p>
-      <p *ngIf="selectedType ==='naturalPerson'||selectedType ==='entrepreneur'">
+      <p *ngIf="selectedType ==='naturalPerson'|| selectedType ==='entrepreneur'">
         <label for="surname">Příjmení</label><br>
         <input
           type="text"
           id="surname"
           ngModel name="surname"
-          required>
+          required
+          #surname="ngModel"><br>
+        <span class="help" *ngIf="!surname.valid && surname.touched">pole musí být vyplněno</span>
       </p>
       <p *ngIf="selectedType ==='naturalPerson'">
         <label for="id">Rodné číslo</label><br>
@@ -43,15 +50,19 @@
           type="text"
           id="id"
           ngModel name="id"
-          required>
+          required
+        #id="ngModel"><br>
+        <span class="help" *ngIf="!id.valid && id.touched">pole musí být vyplněno</span>
       </p>
-      <p *ngIf="selectedType === 'entrepreneur' ||selectedType ==='legalEntity'">
+      <p *ngIf="selectedType === 'entrepreneur' || selectedType ==='legalEntity'">
         <label for="in">IČO</label><br>
         <input
           type="text"
           id="in"
           ngModel name="in"
-          required>
+          required
+        #in="ngModel"><br>
+        <span class="help" *ngIf="!in.valid && in.touched">pole musí být vyplněno</span>
       </p>
       <p *ngIf="selectedType ==='naturalPerson'">
         <label for="nationality">Státní příslušnost</label><br>
@@ -59,7 +70,9 @@
           type="text"
           id="nationality"
           ngModel name="nationality"
-          required>
+          required
+          #nationality="ngModel"><br>
+        <span class="help" *ngIf="!nationality.valid && nationality.touched">pole musí být vyplněno</span>
       </p>
       <p *ngIf="selectedType === 'entrepreneur' || selectedType ==='naturalPerson' || selectedType ==='legalEntity'">
         <label for="email">Email</label><br>
@@ -68,25 +81,31 @@
           id="email"
           ngModel name="email"
           required
-          email>
+          email
+          #email="ngModel"><br>
+        <span class="help" *ngIf="!email.valid && email.touched">pole musí být vyplněno</span>
       </p>
-      <p  *ngIf="selectedType === 'entrepreneur' || selectedType ==='naturalPerson' || selectedType ==='legalEntity'">
+      <p *ngIf="selectedType === 'entrepreneur' || selectedType ==='naturalPerson' || selectedType ==='legalEntity'">
         <label for="tel">Telefonní číslo</label><br>
         <input
           type="text"
           id="tel"
           ngModel name="phone"
-          required>
+          required
+          #phone="ngModel"><br>
+        <span class="help" *ngIf="!phone.valid && phone.touched">pole musí být vyplněno</span>
       </p>
-      <h3  *ngIf="selectedType === 'entrepreneur' || selectedType ==='naturalPerson'">Vyplnte adresu</h3>
-      <h3  *ngIf="selectedType === 'legalEntity'">Vyplnte adresu jednajicí osoba</h3>
+      <h3 *ngIf="selectedType === 'entrepreneur' || selectedType ==='naturalPerson'">Vyplnte adresu</h3>
+      <h3 *ngIf="selectedType === 'legalEntity'">Vyplnte adresu jednajicí osoba</h3>
       <p *ngIf="selectedType ==='legalEntity'">
         <label for="responsiblePerson">Jednající Osoba</label><br>
         <input
           type="text"
           id="responsiblePerson"
           ngModel name="responsiblePerson"
-          required>
+          required
+          #responsiblePerson="ngModel"><br>
+        <span class="help" *ngIf="!responsiblePerson.valid && responsiblePerson.touched">pole musí být vyplněno</span>
       </p>
       <p *ngIf="selectedType ==='legalEntity'">
         <label for="job">Funkce</label><br>
@@ -94,7 +113,9 @@
           type="text"
           id="job"
           ngModel name="job"
-          required>
+          required
+          #job="ngModel"><br>
+        <span class="help" *ngIf="!job.valid && job.touched">pole musí být vyplněno</span>
       </p>
       <p>
         <label for="street">Ulice</label><br>
@@ -102,7 +123,9 @@
           type="text"
           id="street"
           ngModel name="street"
-          required>
+          required
+          #street="ngModel"><br>
+        <span class="help" *ngIf="!street.valid && street.touched">pole musí být vyplněno</span>
       </p>
       <p>
         <label for="cp">Číslo popisné</label><br>
@@ -110,7 +133,9 @@
           type="text"
           id="cp"
           ngModel name="cp"
-          required>
+          required
+          #cp="ngModel"><br>
+        <span class="help" *ngIf="!cp.valid && cp.touched">pole musí být vyplněno</span>
       </p>
       <p>
         <label for="co">Číslo orientační</label><br>
@@ -118,7 +143,9 @@
           type="text"
           id="co"
           ngModel name="co"
-          required>
+          required
+          #co="ngModel"><br>
+        <span class="help" *ngIf="!co.valid && co.touched">pole musí být vyplněno</span>
       </p>
       <p>
         <label for="city">Obec</label><br>
@@ -126,7 +153,9 @@
           type="text"
           id="city"
           ngModel name="city"
-          required>
+          required
+          #city="ngModel"><br>
+        <span class="help" *ngIf="!city.valid && city.touched">pole musí být vyplněno</span>
       </p>
       <p>
         <label for="psc">PSČ</label><br>
@@ -134,7 +163,10 @@
           type="text"
           id="psc"
           ngModel name="psc"
-          required>
+          required
+          pattern="\d{3} ?\d{2}"
+          #psc="ngModel"><br>
+        <span class="help" *ngIf="!psc.valid && psc.touched">pole musí být vyplněno</span>
       </p>
       <button
         type="submit"

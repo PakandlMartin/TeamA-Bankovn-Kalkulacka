@@ -8,8 +8,6 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  idCreated = false;
-
   selectedType = 'naturalPerson';
 
 
@@ -29,6 +27,7 @@ export class UserFormComponent implements OnInit {
     co: '',
     city: '',
     psc: '',
+    companyName: '',
     responsiblePerson: '',
     job: ''
   };
@@ -39,7 +38,6 @@ export class UserFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.idCreated = true;
   }
 
   onSubmit() {
