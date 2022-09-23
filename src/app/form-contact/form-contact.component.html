@@ -1,2 +1,149 @@
-<p>form-contact works!</p>
-<button (click) = "onClick()">Click me!!</button>
+<!-- <p>form-contact works!</p>
+<button (click) = "onClick()">Click me!!</button> -->
+<div class="container">
+    <div class="row">
+  
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div>
+          <select
+            id="applicantType"
+            [(ngModel)]="selectedType"
+            name="applicantType">
+            <option value="INDIVIDUAL">Fyzická Osoba</option>
+            <option value="OSVC">Podnikatel</option>
+            <option value="LEGAL_ENTITY">Právnická Osoba</option>
+          </select>
+        </div>
+        <br>
+        <p *ngIf="selectedType ==='LEGAL_ENTITY'">
+          <label for="name">Název firmy</label><br>
+          <input
+            type="text"
+            id="companyName"
+            ngModel name="companyName"
+            required>
+        </p>
+        <p *ngIf="selectedType ==='INDIVIDUAL'||selectedType ==='OSVC'">
+          <label for="name">Jméno</label><br>
+          <input
+            type="text"
+            id="name"
+            ngModel name="name"
+            required>
+        </p>
+        <p *ngIf="selectedType ==='INDIVIDUAL'||selectedType ==='OSVC'">
+          <label for="surname">Příjmení</label><br>
+          <input
+            type="text"
+            id="surname"
+            ngModel name="surname"
+            required>
+        </p>
+        <p *ngIf="selectedType ==='INDIVIDUAL'">
+          <label for="id">Rodné číslo</label><br>
+          <input
+            type="text"
+            id="id"
+            ngModel name="id"
+            required>
+        </p>
+        <p *ngIf="selectedType === 'OSVC' ||selectedType ==='LEGAL_ENTITY'">
+          <label for="in">IČO</label><br>
+          <input
+            type="text"
+            id="in"
+            ngModel name="in"
+            required>
+        </p>
+        <p *ngIf="selectedType ==='INDIVIDUAL'">
+          <label for="nationality">Státní příslušnost</label><br>
+          <input
+            type="text"
+            id="nationality"
+            ngModel name="nationality"
+            required>
+        </p>
+        <p *ngIf="selectedType === 'OSVC' || selectedType ==='INDIVIDUAL' || selectedType ==='LEGAL_ENTITY'">
+          <label for="email">Email</label><br>
+          <input
+            type="text"
+            id="email"
+            ngModel name="email"
+            required
+            email>
+        </p>
+        <p  *ngIf="selectedType === 'OSVC' || selectedType ==='INDIVIDUAL' || selectedType ==='LEGAL_ENTITY'">
+          <label for="tel">Telefonní číslo</label><br>
+          <input
+            type="text"
+            id="tel"
+            ngModel name="phone"
+            required>
+        </p>
+        <h3  *ngIf="selectedType === 'entrepreneur' || selectedType ==='INDIVIDUAL'">Vyplnte adresu</h3>
+        <h3  *ngIf="selectedType === 'LEGAL_ENTITY'">Vyplnte adresu jednajicí osoba</h3>
+        <p *ngIf="selectedType ==='LEGAL_ENTITY'">
+          <label for="responsiblePerson">Jednající Osoba</label><br>
+          <input
+            type="text"
+            id="responsiblePerson"
+            ngModel name="responsiblePerson"
+            required>
+        </p>
+        <p *ngIf="selectedType ==='LEGAL_ENTITY'">
+          <label for="job">Funkce</label><br>
+          <input
+            type="text"
+            id="job"
+            ngModel name="job"
+            required>
+        </p>
+        <p>
+          <label for="street">Ulice</label><br>
+          <input
+            type="text"
+            id="street"
+            ngModel name="street"
+            required>
+        </p>
+        <p>
+          <label for="cp">Číslo popisné</label><br>
+          <input
+            type="text"
+            id="cp"
+            ngModel name="cp"
+            required>
+        </p>
+        <p>
+          <label for="co">Číslo orientační</label><br>
+          <input
+            type="text"
+            id="co"
+            ngModel name="co"
+            required>
+        </p>
+        <p>
+          <label for="city">Obec</label><br>
+          <input
+            type="text"
+            id="city"
+            ngModel name="city"
+            required>
+        </p>
+        <p>
+          <label for="psc">PSČ</label><br>
+          <input
+            type="text"
+            id="psc"
+            ngModel name="psc"
+            required>
+        </p>
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!f.valid"
+        >REGISTROVAT SE
+        </button>
+      </form>
+    </div>
+  </div>
