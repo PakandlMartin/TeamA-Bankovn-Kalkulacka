@@ -2,16 +2,20 @@ import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { HttpRequestsService } from '../http-requests.service';
 
 
+
 import { UserInfoService } from '../user-info.service';
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-calculation',
   templateUrl: './form-calculation.component.html',
   styleUrls: ['./form-calculation.component.css'],
 })
+
+
 export class FormCalculationComponent implements DoCheck {
-amountInput: number = 0;
+
+// amountInput = ;
+amountInput;
 numOfMOnthsInput: number = 0;
 btnActive: boolean = false;
 calculationInputs = {
@@ -20,54 +24,66 @@ calculationInputs = {
 }
 
 calculationOutput = {
-  monthlyPayment: 0,
-  yearlyInterest: 0,
-  RPSN: 0,
-  overallAmount: 0,
+  monthlyPayment: 0, 
+  yearlyInterest: 0, 
+  RPSN: 0, 
+  overallAmount: 0, 
   fixedFee: 0
 };
 
 requestCalc: any;
+amountOfMoney: any;
 
-  constructor(
+  constructor( 
     private httpRequestsService: HttpRequestsService,
-    private userInfoService: UserInfoService,
-    private router: Router, private route: ActivatedRoute
+    private userInfoService: UserInfoService
     ) {}
 
   ngOnInit(): void {
   }
-
+  
   ngDoCheck() {
     this.requestCalc = this.httpRequestsService.calculationInfo
     if (this.requestCalc) {
       console.log(this.requestCalc)
       console.log(this.requestCalc.RPSN)
     }
+this.amountOfMoney = this.amountInput
+
   }
 
-  calculate(amountCalculate, numOfMonthsCalculate) {
-    this.calculationInputs.amount = amountCalculate;
-    this.calculationInputs.numOfMonths = numOfMonthsCalculate
-    if (this.calculationInputs) {
-      this.userInfoService.calculationInformation.amount =  amountCalculate;
-      this.userInfoService.calculationInformation.numOfMonths = numOfMonthsCalculate;
-    }
-    this.router.navigate(['/form'], {relativeTo: this.route});
+  calculate(amountCalculate, numOfMonthsCalculate ) {
+    this.calculationInputs.amount = Number(amountCalculate);
+    this.calculationInputs.numOfMonths = Number(numOfMonthsCalculate);
+
+      this.userInfoService.calculationInformation.amount =  Number(amountCalculate);
+      this.userInfoService.calculationInformation.numOfMonths = Number(numOfMonthsCalculate);
+ 
     console.log(this.userInfoService)
-
   }
-
+  
   changeOfAmount(amountChange) {
     this.amountInput = Number(amountChange.target.value);
-    this.calculationInputs.amount = this.amountInput
+    this.calculationInputs.amount = Number(this.amountInput)
     this.changeBtnActive();
    this.httpRequestsService.postCalculationInfo((this.calculationInputs));
+   console.log(this.calculationInputs)
+  }
+
+  changeAmountRange(amountChangeRange) {
+    this.amountInput = Number(amountChangeRange.target.value);
+    this.calculationInputs.amount = Number(this.amountInput)
+    this.changeBtnActive();
+   this.httpRequestsService.postCalculationInfo((this.calculationInputs));
+   console.log(this.calculationInputs)
+  //  amountChange = amountChangeRange.target.value
+  // console.log(amountChange)
+
   }
 
   changeOfNumOfMonths(numChange) {
     this.numOfMOnthsInput = Number(numChange.target.value);
-    this.calculationInputs.numOfMonths = this.numOfMOnthsInput;
+    this.calculationInputs.numOfMonths = Number(this.numOfMOnthsInput);
     this.changeBtnActive();
     this.httpRequestsService.postCalculationInfo(
       (this.calculationInputs)
